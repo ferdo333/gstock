@@ -89,7 +89,10 @@
                 </div>
 
                 <div class="links">
-                <a href="/productos/create">Agrega un producto</a>
+                <a href="/productos/create">Agregar un producto</a>
+                   
+                
+                <a href="/productos">Listar Productos</a>
                    
                 </div>
             </div>
