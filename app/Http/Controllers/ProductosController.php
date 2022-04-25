@@ -4,17 +4,31 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Producto;
+use App\Models\Categoria;
 use Illuminate\Support\Facade\DB;
 
 class ProductosController extends Controller
 {
     
-    public function index(){
-        $productos = Producto::get();
+ 
+        public function index(){
 
-        return view('productos/listado', [
+
+         /*   $categorias = Categoria::where('id', '=', $id )
+            ->get()
+            ->load('productos');
+    
+            return view('productos/listado',[
+                'categorias' => $categorias
+            ]);
+*/
+        
+       $productos = Producto::get();
+
+       return view('productos/listado', [
             'productos' => $productos
         ]);
+
     }
 
     public function create(){
@@ -48,5 +62,33 @@ class ProductosController extends Controller
         ]);
     }
     
+    /*VAMOS A INCLUIR EDITAR DESPUES.*/
+    public function patch($id){
+                   
+    
+        Producto::where('id', '=', $id)->patch();
+         $productos = Producto::get();
+
+    return view('productos/editar', [
+        'productos' => $productos
+    ]);
+        
+ }
+    
+    public function delete($id){
+                   
+    
+            Producto::where('id', '=', $id)->delete();
+             $productos = Producto::get();
+        return view('productos/listado', [
+            'productos' => $productos
+        ]);
+            
+     }
+
 
 }
+    
+
+
+

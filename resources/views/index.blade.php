@@ -90,10 +90,10 @@
 
                 <div class="links">
                 <a href="/productos/create">Agregar un producto</a>
-                   
+                <a href="/productossucursales/create">Ingresa Producto a Sucursal</a>   
                 
                 <a href="/productos">Listar Productos</a>
-                   
+                <a href="/productossucursales">Listar Productos por Sucursal</a>  
                 </div>
             </div>
         </div>

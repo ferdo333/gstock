@@ -9,17 +9,18 @@
 <hr>
 <div class="row">
    
-     @foreach($productos as $producto)
+     @foreach($productossucursales as $productosucursal)
 
     <div class="col-3">
        <div class="card" style="whdth:  20rem;">
        <div class="card-body">
-           <h5 classs="card-title">{{$producto->nombre}}</h5>
-           <h5 classs="card-title">{{$producto->coduni}}</h5>
+           <h5 classs="card-title">ID PRODUCTOS {{$productosucursal->productos_id}}</h5>
+           <h5 classs="card-title">ID SUCURSAL {{$productosucursal->sucursales_id}}</h5>
+        
            <div class="btn-group" role="group" aria-label="Basic mixed styles example">
            <div class="card-footer">    
-                       <a href="/editarProductos/{{ $producto->id }}" type="button" class="btn btn-success">Editar</a>
-                        <a href="/eliminarProductos/{{ $producto->id }}" role="button" class="btn btn-danger" data-toggle="modal">Eliminar</a>
+                     
+                        <a href="/eliminarProductosSucursales/{{ $productosucursal->id }}" role="button" class="btn btn-danger" data-toggle="modal">Dar de baja</a>
                     </div>
                     </div>
                 </div>
