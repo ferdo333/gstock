@@ -23,7 +23,7 @@
 <body>
 <div class="container-fluid bg-3 text-center " >
        @section('header')
-        <h1>G-STOCK</h1>
+      
     @show
 </div>
 

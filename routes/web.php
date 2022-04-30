@@ -25,10 +25,10 @@ Route::resource('sucursales', SucursalesController::class);
 Route::resource('productos', ProductosController::class);
 Route::resource('productossucursales', ProductosSucursalesController::class);
 
-
+Route::get('productos/{id}', 'ProductosController@index');
 Route::get('eliminarProductos/{id}', 'ProductosController@delete');
 Route::get('eliminarProductosSucursales/{id}', 'ProductosSucursalesController@delete');
-Route::post('mostrarProductosSucursales/{id}', 'ProductosSucursalesController@show');
+Route::get('mostrarProductosSucursales/{id}', 'ProductosSucursalesController@show');
 Route::get('editarProductos/{id}', 'ProductosController@update');
 
 
