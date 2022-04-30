@@ -18,4 +18,6 @@ class Productosucursal extends Model
         return $this->belongsTo(Producto::class, 'productos_id');
     }
 
+
+
 }

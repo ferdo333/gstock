@@ -94,8 +94,13 @@
                 
                 <a href="/productos">Listar Productos</a>
                 <a href="/productossucursales">Listar Productos por Sucursal</a>  
+                 <a href="/productossucursales/show">Buscar Productos</a>
+                
                 </div>
+
             </div>
+           
         </div>
     </body>
 </html>
+

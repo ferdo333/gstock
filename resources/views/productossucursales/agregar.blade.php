@@ -13,6 +13,7 @@
                 <div class="card-header">{{ __('Agregar Producto ') }}</div>
 
                 <div class="card-body">
+
       <form action="{{ url('/productossucursales')}}" method="POST">
         @csrf
       

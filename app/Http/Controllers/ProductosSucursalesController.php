@@ -17,7 +17,14 @@ class ProductosSucursalesController extends Controller
             'productossucursales' => $productossucursales
         ]);
     }
-
+    public function producto(){
+        return $this->belongsTo(Producto::class)
+        ;
+    }
+    public function sucursal(){
+        return $this->belongsTo(Sucursal::class)
+        ;
+    }
     public function create(){
         return view('productossucursales/agregar');
     }
@@ -62,7 +69,20 @@ class ProductosSucursalesController extends Controller
 
  public function show($id){
     Productosucursal::where('id', '=', $id)->show();
-    return view('productossucursales/listadobuscar',[ 'productossucursales' => $productossucursales]);
-    
-}
+    Sucursal::where('id', '=', $id)->show('nombre');
+    return view('productossucursales/buscar',[ 'productossucursales' => $productossucursales]
+);  }
+
+        /*   public function show($id){
+                                 $productossucursales = Productosucursal::where('id', '=', $id )
+                                    ->get();
+                                    //->load('personajes');
+                            
+                                    return view('productossucursales/buscar',[
+                                        'productossucursales' => $productossucursales
+                                    ]);
+                                }*/
+
+
+
 }

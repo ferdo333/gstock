@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Producto;
 use App\Models\Categoria;
+use App\Models\Productosucursal;
 use Illuminate\Support\Facade\DB;
 
 class ProductosController extends Controller
@@ -77,7 +78,7 @@ class ProductosController extends Controller
     
     public function delete($id){
                    
-    
+        ProductoSucursal::where('productos_id', '=', $id)->delete();
             Producto::where('id', '=', $id)->delete();
              $productos = Producto::get();
         return view('productos/listado', [

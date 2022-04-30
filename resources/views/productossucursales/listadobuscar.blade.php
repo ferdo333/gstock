@@ -10,14 +10,14 @@
 <div class="row">
    
      @foreach($productossucursales as $productosucursal)
-     @foreach($productosucursal->productos as $producto)
+    
     <div class="col-3">
        <div class="card" style="whdth:  20rem;">
        <div class="card-body">
            <h5 classs="card-title">{{$producto->nombre}}</h5>
            <h5 classs="card-title"> {{$producto->coduni}}</h5>
            <h5 classs="card-title">ID SUCURSAL {{$productosucursal->sucursales_id}}</h5>
-        
+           
            <div class="btn-group" role="group" aria-label="Basic mixed styles example">
            <div class="card-footer">    
                      
@@ -30,7 +30,7 @@
        </div>
       
        @endforeach
-       @endforeach
+       
 
        
     @stop
