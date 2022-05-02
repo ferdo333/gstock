@@ -85,7 +85,7 @@ public function show(){
    public function ver(request $request){
   //  $productossucursales = gstock::table('productossucursales')->select('precio','cantidad')->get();
    // $productossucursales =  Productosucursal::select('productos_id->nombre','precio')->where('id', '=', $id)->get();
-   
+   //
      $productossucursales = Productosucursal::select('productos_id->nombre','precio')->where('productos_id', $request->productos_id)->get();
    // $productossucursales = Productosucursal::select('productos_id->nombre','precio')->where('id', '=', $id)->get();
   // Account::where('company_id', $request->company_id)->with('types')->with('company')->get();
