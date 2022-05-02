@@ -29,7 +29,10 @@ Route::get('productos/{id}', 'ProductosController@index');
 Route::get('eliminarProductos/{id}', 'ProductosController@delete');
 Route::get('eliminarProductosSucursales/{id}', 'ProductosSucursalesController@delete');
 Route::get('mostrarProductosSucursales/{id}', 'ProductosSucursalesController@show');
+Route::get('verProductosSucursales/{id}', 'ProductosSucursalesController@ver');
 Route::get('editarProductos/{id}', 'ProductosController@update');
+
+
 
 
 Auth::routes();

@@ -9,15 +9,19 @@
 <hr>
 <div class="row">
    
+
     
+
+
     <div class="col-3">
        <div class="card" style="whdth:  20rem;">
        <div class="card-body">
-       <form action="{{ url('/mostrarProductosSucursales/{id}')}}" method="POST">
-       @csrf
-      
+       
+       <form action="{{ url('/verProductosSucursales/{id}')}}" method="GET">
+       
        <label for="id" class="form-label">Busqueda por ID.</label>
-       <input type="number" class="form-control" id="id" name="id">
+      
+       <input type="number" class="form-control" id="id" name="id" value="">
 
 
         
@@ -25,15 +29,16 @@
            <div class="card-footer">    
                      
            <button type="submit" class="btn btn-primary">buscar</button>
-           </form>
+        
                     </div>
                     </div>
                 </div>
             </div>
            
        </div>
+ 
       
-      
+    
       
        
     @stop

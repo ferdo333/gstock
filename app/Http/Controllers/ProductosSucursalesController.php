@@ -67,22 +67,32 @@ class ProductosSucursalesController extends Controller
         
  }
 
- public function show($id){
+/* public function show($id){
     Productosucursal::where('id', '=', $id)->show();
     Sucursal::where('id', '=', $id)->show('nombre');
-    return view('productossucursales/buscar',[ 'productossucursales' => $productossucursales]
-);  }
-
-        /*   public function show($id){
-                                 $productossucursales = Productosucursal::where('id', '=', $id )
-                                    ->get();
-                                    //->load('personajes');
-                            
-                                    return view('productossucursales/buscar',[
-                                        'productossucursales' => $productossucursales
-                                    ]);
-                                }*/
+    return view('productossucursales/listadobuscar',[ 'productossucursales' => $productossucursales]
+);  }*/
 
 
-
+public function show(){
+   // Productosucursal::where('id', '=', $id)->get();
+    $productossucursales = Productosucursal::get();
+   
+       return view('productossucursales/buscador',[
+           'productossucursales' => $productossucursales
+       ]);
+   }
+   public function ver(request $request){
+  //  $productossucursales = gstock::table('productossucursales')->select('precio','cantidad')->get();
+   // $productossucursales =  Productosucursal::select('productos_id->nombre','precio')->where('id', '=', $id)->get();
+   
+     $productossucursales = Productosucursal::select('productos_id->nombre','precio')->where('productos_id', $request->productos_id)->get();
+   // $productossucursales = Productosucursal::select('productos_id->nombre','precio')->where('id', '=', $id)->get();
+  // Account::where('company_id', $request->company_id)->with('types')->with('company')->get();
+  
+       return view('productossucursales/versucursalid',[
+        'productossucursales' => $productossucursales
+       ]);
+   }
+                               
 }
