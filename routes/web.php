@@ -17,8 +17,11 @@ Route::get('/index', function () {
     return view('index');
 });
 
+Route::get('/', function () {
+    return view('home');
+});
 
-Route::get('/', 'CategoriasController@index');
+//Route::get('/', 'CategoriasController@index');
 
 Route::resource('categorias', CategoriasController::class);
 Route::resource('sucursales', SucursalesController::class);
@@ -28,11 +31,16 @@ Route::resource('productossucursales', ProductosSucursalesController::class);
 Route::get('productos/{id}', 'ProductosController@index');
 Route::get('eliminarProductos/{id}', 'ProductosController@delete');
 Route::get('eliminarProductosSucursales/{id}', 'ProductosSucursalesController@delete');
-Route::get('mostrarProductosSucursales/{id}', 'ProductosSucursalesController@show');
-Route::get('editarProductos/{id}', 'ProductosController@update');
+//Route::get('mostrarProductosSucursales/{id}', 'ProductosSucursalesController@show');
+Route::post('producto', 'ProductosController@update');
+
+Route::get('productos/{id}','PersonajesController@show');
+
+Route::get('verProductosSucursales/{id}', 'ProductosSucursalesController@ver');
+//Route::get('editarProductos/{id}', 'ProductosController@update');
 
 
 Auth::routes();
 
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');

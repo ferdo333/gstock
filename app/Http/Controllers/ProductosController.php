@@ -13,23 +13,50 @@ class ProductosController extends Controller
     
  
         public function index(){
+         
 
-
-         /*   $categorias = Categoria::where('id', '=', $id )
-            ->get()
-            ->load('productos');
-    
-            return view('productos/listado',[
-                'categorias' => $categorias
-            ]);
-*/
-        
-       $productos = Producto::get();
+       
+    // $categorias = Categoria::get();  
+      $productos = Producto::get();
 
        return view('productos/listado', [
+         
+           
+            'productos' => $productos
+            //,'categorias' => $categorias
+        ]);
+
+    }
+    public function categorias(){
+        return $this->belongsTo(Categoria::class)
+        ;
+    }
+   /* public function editar($id){
+
+        $categoria = Categoria::where('id', $id)->get();
+
+
+        $productos=Producto::where('categorias_id', $id)
+        ->get()
+        ->load('categoria');
+
+        return view('productos/listado',[
+            'categoria' => $categoria,
             'productos' => $productos
         ]);
 
+    } */
+
+    public function show($id){
+        $producto = Producto::where('id', '=', $id )
+        ->get();
+
+        $categorias = Categoria::get();
+
+        return view('productos/editar',[
+            'producto' => $producto,
+            'categorias' => $categorias
+        ]);
     }
 
     public function create(){
@@ -42,6 +69,7 @@ class ProductosController extends Controller
             'coduni' => 'required',
             'nombre' => 'required',
             'desc' => 'required',
+            'estado' => 'required',
             'categorias_id' => 'required'
 
         ]);
@@ -51,6 +79,7 @@ class ProductosController extends Controller
         $producto->coduni = $request->coduni;
         $producto->nombre = $request->nombre;
         $producto->desc = $request->desc;
+        $producto->estado = $request->estado;
         $producto->categorias_id = $request->categorias_id;
         $producto->save();
 
@@ -62,19 +91,7 @@ class ProductosController extends Controller
             'productos' => $producto
         ]);
     }
-    
-    /*VAMOS A INCLUIR EDITAR DESPUES.*/
-    public function patch($id){
-                   
-    
-        Producto::where('id', '=', $id)->patch();
-         $productos = Producto::get();
-
-    return view('productos/editar', [
-        'productos' => $productos
-    ]);
-        
- }
+   
     
     public function delete($id){
                    
@@ -86,6 +103,43 @@ class ProductosController extends Controller
         ]);
             
      }
+
+     public function update(Request $request){
+        //validamos
+        $this->validate($request,[
+            'coduni' => 'required',
+            'nombre' => 'required',
+            'desc' => 'required',
+            'estado' => 'required',
+            'categorias_id' => 'required'
+        ]);
+        $producto = Producto::where('id', $request->id )
+        ->get();
+
+        if($producto->isEmpty()){
+            return redirect('/');
+        }else{
+            //$categoriaid = $producto[0]->categorias_id;
+            //Actualizar Datos
+            Producto::where('id', $request->id)
+            ->update([
+                'coduni' => $request->coduni,
+                'nombre' => $request->nombre,
+                'desc' => $request->desc,
+                'estado' => $request->estado,
+                'categorias_id' => $request->categorias_id
+
+                
+            ]);
+        }
+        return view('productos/listado', [
+            'productos' => $producto
+        ]);
+     /*   return redirect()->action(
+            [ProductosController::class, 'update'],['id' => $categoriaid]
+        );*/
+    }
+
 
 
 }

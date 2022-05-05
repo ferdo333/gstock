@@ -18,7 +18,8 @@ class CreateProductosTable extends Migration
             $table->string('coduni',12);
             $table->string('nombre',45);
             $table->text('desc');
-            $table->integer('categoria_id');
+            $table->string('estado',9);
+    
             $table->foreignId('categorias_id')->constrained();
         });
     }

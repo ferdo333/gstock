@@ -17,8 +17,7 @@ class CreateProductossucursalesTable extends Migration
                 $table->id();
                 $table->integer('precio');
                 $table->integer('cantidad');
-                $table->integer('productos_id');
-                $table->integer('sucursales_id');
+                
                 $table->foreignId('productos_id')->constrained();
                 $table->foreignId('sucursales_id')->constrained();
                 

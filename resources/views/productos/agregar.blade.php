@@ -34,6 +34,14 @@
             
         </div>
         <div class="mb-3">
+        <select id="estado" name="estado" class="form-select" aria-label="Default select example">
+        <option selected>Estado</option>
+        <option value="Activo" >Activo</option>
+        <option value="Inactivo" >Inactivo</option>
+         </select>
+            
+        </div>
+        <div class="mb-3">
         <label for="desc" class="form-label">Descripción</label>
         <textarea name="desc" id="desc" cols="30" rows="10" class="form-control"></textarea>
         </div>       

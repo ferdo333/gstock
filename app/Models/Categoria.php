@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -8,6 +8,7 @@ class Categoria extends Model
 {
     protected $table = 'categorias';
     protected $primarykey =  'id_categorias';
+    public $timestamps = false;
     
     public function producto(){
         return $this->hasMany(Producto::class);

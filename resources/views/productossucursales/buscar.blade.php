@@ -13,7 +13,7 @@
     <div class="col-3">
        <div class="card" style="whdth:  20rem;">
        <div class="card-body">
-       <form action="{{ url('/mostrarProductosSucursales/{id}')}}" method="POST">
+       <form action="{{ url('/mostrarProductosSucursales/{id}')}}" method="GET">
        @csrf
       
        <label for="id" class="form-label">Busqueda por ID.</label>

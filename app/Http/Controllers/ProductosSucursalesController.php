@@ -68,8 +68,9 @@ class ProductosSucursalesController extends Controller
  }
 
  public function show($id){
-    Productosucursal::where('id', '=', $id)->show();
-    Sucursal::where('id', '=', $id)->show('nombre');
+    $productossucursales  = Productosucursal::where('id', '=', $id)->get();
+  // $productossucursales = Productosucursal::get();
+    Sucursal::where('id', '=', $id)->get('nombre');
     return view('productossucursales/buscar',[ 'productossucursales' => $productossucursales]
 );  }
 
@@ -83,6 +84,17 @@ class ProductosSucursalesController extends Controller
                                     ]);
                                 }*/
 
-
+                                public function ver($id){
+                                    //  $productossucursales = gstock::table('productossucursales')->select('precio','cantidad')->get();
+                                      $productossucursales =  Productosucursal::select('productos_id->nombre','precio')->where('id', '=', $id)->get();
+                                     //
+                                       $productossucursales = Productosucursal::select('productos_id->nombre','precio')->where('productos_id', $request->productos_id)->get();
+                                     // $productossucursales = Productosucursal::select('productos_id->nombre','precio')->where('id', '=', $id)->get();
+                                    // Account::where('company_id', $request->company_id)->with('types')->with('company')->get();
+                                   // $productossucursales = Productosucursal::get();
+                                         return view('productossucursales/versucursalid',[
+                                          'productossucursales' => $productossucursales
+                                         ]);
+                                     }
 
 }
