@@ -39,8 +39,9 @@ Route::get('productos/{id}','PersonajesController@show');
 Route::get('verProductosSucursales/{id}', 'ProductosSucursalesController@ver');
 //Route::get('editarProductos/{id}', 'ProductosController@update');
 
+Route::get('/buscar/{search?}', 'ProductosController@search')->name('buscar');
 
 Auth::routes();
 
 
-//Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home');

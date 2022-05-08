@@ -39,6 +39,14 @@
         <input type="number" class="form-control" id="cantidad" name="cantidad">
         </div>       
         <button type="submit" class="btn btn-primary">Crear</button>
+        @if($errors->any())
+         <hr>
+         <div class="alert alert-danger"><ul>@foreach($errors->all() as $error) 
+         <li>{{$error }}</li>
+                     @endforeach
+                     </ul>
+                      </div>   
+                        @endif
     </form>
     </div>
             </div>

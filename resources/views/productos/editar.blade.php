@@ -19,7 +19,7 @@
        
         <div class="mb-3">
         <label for="coduni" class="form-label">Código Único</label>
-            <input type="text" class="form-control" id="coduni" name="coduni" value="{{ $producto[0]->coduni }}">
+            <input disabled type="text" class="form-control" id="coduni" name="coduni" value="{{ $producto[0]->coduni }}">
         </div>
         <div class="mb-3">
             <label for="nombre" class="form-label">Nombre</label>
@@ -48,10 +48,18 @@
             
         <div class="mb-3">
         <label for="desc" class="form-label">Descripción</label>
-        <textarea name="desc" id="desc" cols="30" rows="10" class="form-control"></textarea>
+        <textarea name="desc" id="desc" cols="30" rows="10" class="form-control">{{ $producto[0]->desc}}</textarea>
         </div>     
         <input type="hidden" name="id" value="{{ $producto[0]->id }}"> 
         <button type="submit" class="btn btn-primary">editar</button>
+        @if($errors->any())
+         <hr>
+         <div class="alert alert-danger"><ul>@foreach($errors->all() as $error) 
+         <li>{{$error }}</li>
+                     @endforeach
+                     </ul>
+                      </div>   
+                        @endif
     </form>
     </div>
             </div>

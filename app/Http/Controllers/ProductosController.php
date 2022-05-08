@@ -107,7 +107,7 @@ class ProductosController extends Controller
      public function update(Request $request){
         //validamos
         $this->validate($request,[
-            'coduni' => 'required',
+            
             'nombre' => 'required',
             'desc' => 'required',
             'estado' => 'required',
@@ -123,7 +123,7 @@ class ProductosController extends Controller
             //Actualizar Datos
             Producto::where('id', $request->id)
             ->update([
-                'coduni' => $request->coduni,
+                
                 'nombre' => $request->nombre,
                 'desc' => $request->desc,
                 'estado' => $request->estado,
@@ -140,6 +140,26 @@ class ProductosController extends Controller
         );*/
     }
 
+    public function search($search=null){
+        if(is_null($search)){
+            $search = \Request::get('search');
+        }
+
+        $productos = Producto::where('coduni', 'LIKE', '%'.$search.'%')->get();
+       // Crear consulta para saber si  ID de producto está vacio devolver a 1 o 0.
+       
+       
+ 
+        return view('productos.listado')
+        ->with(
+            array(
+                'productos' => $productos,
+                'search' => $search
+            )
+            );
+        
+
+    }
 
 
 }

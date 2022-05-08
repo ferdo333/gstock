@@ -31,8 +31,10 @@
         <option value="2" >Polerón</option>
         <option value="3" >Pantalón</option>
          </select>
-            
+         
         </div>
+
+        
         <div class="mb-3">
         <select id="estado" name="estado" class="form-select" aria-label="Default select example">
         <option selected>Estado</option>
@@ -46,6 +48,14 @@
         <textarea name="desc" id="desc" cols="30" rows="10" class="form-control"></textarea>
         </div>       
         <button type="submit" class="btn btn-primary">Crear</button>
+        @if($errors->any())
+         <hr>
+         <div class="alert alert-danger"><ul>@foreach($errors->all() as $error) 
+         <li>{{$error }}</li>
+                     @endforeach
+                     </ul>
+                      </div>   
+                        @endif
     </form>
     </div>
             </div>
